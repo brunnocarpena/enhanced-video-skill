@@ -40,7 +40,7 @@ Regras de quebra:
 **Antes, conferir se o ffmpeg queima legenda**: `scripts/check-tools.sh` (ou `ffmpeg -filters | grep -wE "ass|drawtext"`). O `ffmpeg` do Homebrew vem sem libass e sem freetype: `ass`, `subtitles` e `drawtext` não existem e o comando falha com "No such filter". Nesse caso, em ordem:
 
 1. **HyperFrames** com o vídeo como `<video class="clip">` e a legenda em HTML por cima (renderiza no Chromium, não depende de libass). É o caminho padrão.
-2. **PNG transparente + `overlay`**: gerar um PNG por bloco (HTML num Chromium headless com fundo transparente, perfil temporário, matar só pelo PID próprio) e sobrepor com `overlay=enable='between(t,INI,FIM)'`. Bom para poucos blocos (título do gancho); para legenda inteira, preferir o 1.
+2. **PNG transparente + `overlay`**: um PNG por bloco com `scripts/texto-png.py` (só ImageMagick, sem navegador; já quebra linha na largura da área útil, faz contorno, caixa de fundo e palavra em destaque) e sobrepor com `overlay=x=(W-w)/2:y=Y:enable='between(t,INI,FIM)'`. Serve para título do gancho, CTA e também para legenda inteira quando o HyperFrames não está à mão. Só se o ImageMagick faltar, cair para HTML num Chromium headless (perfil temporário, matar só pelo PID próprio): no eval de 01/10 o `--screenshot` do Brave travou e o CDP funcionou.
 3. **`ffmpeg-full`** do Homebrew (grátis, keg-only, tem libass): só depois da `supply-chain-guard` e do ok do usuário; chamar pelo caminho completo `$(brew --prefix)/opt/ffmpeg-full/bin/ffmpeg`.
 
 Nunca entregar o vídeo sem legenda e dizer que "faltou o filtro": escolher um dos caminhos acima.
@@ -52,6 +52,6 @@ Também exportar o `.srt` ao lado do MP4: plataformas aceitam legenda fechada e 
 ## Checklist
 
 - [ ] Nenhum bloco com mais de 5 palavras ou 2 linhas
-- [ ] Dentro da área útil, sem colidir com rosto nem UI
+- [ ] Dentro da área útil, sem colidir com rosto nem UI. A largura do bloco nunca passa de 865 px no 9:16 (o `texto-png.py` já respeita); com pessoa real no quadro, a legenda fica abaixo do queixo, não em cima da boca: conferir no frame e descer o bloco (~80 px costuma bastar) mantendo o topo do texto acima de y=1250
 - [ ] Sincronizada (conferir 3 frames com a palavra esperada)
 - [ ] Acentos corretos, nomes próprios corretos

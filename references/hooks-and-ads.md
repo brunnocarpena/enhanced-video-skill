@@ -23,7 +23,7 @@ Um gancho bom tem 3 camadas que chegam juntas no frame 0:
 | Prova primeiro | print de depoimento/resultado no frame 0 + "foi isso que a Ana conseguiu." |
 | Cena no meio | começar no meio da ação ("...e foi aí que tudo mudou.") |
 
-Nada de número ou resultado inventado: só o que o cliente comprova (regra da casa).
+Nada de número ou resultado inventado: só o que o cliente comprova (regra da casa). Vale também para o CTA e o cartão final: "inscrições abertas", "últimas vagas", "só hoje", bônus ou prazo só entram se o briefing disser. Na dúvida, CTA neutro ("Toque em Saiba mais") e a pergunta vai para o RESUMO; anúncio com promessa falsa é reprovado pela Meta e queima a conta.
 
 ## Estrutura do criativo (15-30s)
 
@@ -45,7 +45,7 @@ Para o objetivo de conversão, mostrar marca/produto nos primeiros 3s. Para alca
 
 ## Variações
 
-Anúncio não se entrega sozinho: entregar **3-5 variações de gancho** sobre o mesmo corpo. É o que o gestor de tráfego testa. Nomear `<campanha>-gancho-A.mp4`, `-B`, `-C`; manter corpo e CTA idênticos para o teste ser limpo. Registrar no `project.md` qual fórmula cada gancho usa.
+Anúncio não se entrega sozinho: entregar **3-5 variações de gancho** sobre o mesmo corpo. É o que o gestor de tráfego testa. Nomear `<campanha>-gancho-A.mp4`, `-B`, `-C`; manter corpo e CTA idênticos para o teste ser limpo. Registrar no `project.md` qual fórmula cada gancho usa. Cada variação respeita sozinha a duração pedida: gancho mais longo come o corpo, não estica o vídeo. Medir com `ffprobe` cada arquivo antes de entregar.
 
 ## Checklist do roteiro (antes de produzir)
 

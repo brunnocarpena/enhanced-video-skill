@@ -30,6 +30,10 @@ else
   fi
 fi
 
+echo "== Texto em PNG (legenda/título sem drawtext) =="
+if command -v magick >/dev/null; then ok "ImageMagick $(magick -version | head -1 | awk '{print $3}') -> scripts/texto-png.py"
+else falta "ImageMagick (brew install imagemagick) - sem ele, texto via HyperFrames ou Chromium headless"; fi
+
 echo "== Transcrição =="
 if command -v whisper-cli >/dev/null || command -v whisper-cpp >/dev/null; then ok "whisper.cpp"
 elif command -v whisper >/dev/null; then ok "openai-whisper"
@@ -37,7 +41,9 @@ else falta "Whisper local (brew install whisper-cpp, ou uvx openai-whisper) - an
 
 echo "== HyperFrames =="
 if command -v npx >/dev/null; then
-  ok "node $(node -v 2>/dev/null) / npx (HyperFrames via npx hyperframes@<versão pinada>)"
+  ok "node $(node -v 2>/dev/null) (HyperFrames via npm exec --package=hyperframes@<versão pinada>)"
+  MRA=$(npm config get min-release-age 2>/dev/null)
+  [ -n "$MRA" ] && [ "$MRA" != "null" ] && [ "$MRA" != "undefined" ] && echo "      npm min-release-age=$MRA: pinar versão publicada há $MRA+ dias (hyperframes.md)"
 else falta "node/npx"; fi
 for b in "/Applications/Google Chrome.app" "/Applications/Brave Browser.app" "/Applications/Chromium.app"; do
   [ -d "$b" ] && { ok "navegador Chromium: $b"; break; }
