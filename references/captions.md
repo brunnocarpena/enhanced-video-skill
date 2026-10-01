@@ -37,6 +37,14 @@ Regras de quebra:
 | Remotion | `@remotion/captions` ([remotion.md](remotion.md)) |
 | ffmpeg puro | gerar `.ass` com estilo e `\k` por palavra (karaokê) e queimar com `-vf "ass=legenda.ass"` ([ffmpeg-recipes.md](ffmpeg-recipes.md)) |
 
+**Antes, conferir se o ffmpeg queima legenda**: `scripts/check-tools.sh` (ou `ffmpeg -filters | grep -wE "ass|drawtext"`). O `ffmpeg` do Homebrew vem sem libass e sem freetype: `ass`, `subtitles` e `drawtext` não existem e o comando falha com "No such filter". Nesse caso, em ordem:
+
+1. **HyperFrames** com o vídeo como `<video class="clip">` e a legenda em HTML por cima (renderiza no Chromium, não depende de libass). É o caminho padrão.
+2. **PNG transparente + `overlay`**: gerar um PNG por bloco (HTML num Chromium headless com fundo transparente, perfil temporário, matar só pelo PID próprio) e sobrepor com `overlay=enable='between(t,INI,FIM)'`. Bom para poucos blocos (título do gancho); para legenda inteira, preferir o 1.
+3. **`ffmpeg-full`** do Homebrew (grátis, keg-only, tem libass): só depois da `supply-chain-guard` e do ok do usuário; chamar pelo caminho completo `$(brew --prefix)/opt/ffmpeg-full/bin/ffmpeg`.
+
+Nunca entregar o vídeo sem legenda e dizer que "faltou o filtro": escolher um dos caminhos acima.
+
 O `.ass` permite estilo completo (fonte, contorno, posição, cor de destaque via karaokê) e é o caminho mais leve para cortes de live. Para fonte que não está instalada no sistema, passar `fontsdir` no filtro (`ass=legenda.ass:fontsdir=./fontes`).
 
 Também exportar o `.srt` ao lado do MP4: plataformas aceitam legenda fechada e isso ajuda acessibilidade e busca.

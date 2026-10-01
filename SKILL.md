@@ -41,6 +41,8 @@ Responder estas 4 perguntas, a partir do pedido e dos arquivos. Perguntar ao usu
 | Avatar falando, até 1 min | HeyGen Free via MCP | cota 3/mês, com [quota-guard.md](references/quota-guard.md) |
 | Qualquer coisa paga (HeyGen API, Higgsfield, Veo, Kling, render na nuvem) | só sob pedido explícito → [paid-on-request.md](references/paid-on-request.md) | mostrar custo e esperar ok |
 
+Rodar `scripts/check-tools.sh` antes de prometer um caminho: ele diz se este ffmpeg queima legenda (o do Homebrew vem sem libass/drawtext), se há Whisper, HyperFrames, MCP da HeyGen e quanto resta da cota. Escolher o motor pelo que existe aqui, não pelo que a receita supõe.
+
 Abrir/atualizar `project.md` na pasta do trabalho com o resultado da triagem (modelo no fim deste arquivo). Ele é a memória do vídeo entre sessões.
 
 ## Pipeline

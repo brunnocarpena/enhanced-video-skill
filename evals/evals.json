@@ -1,0 +1,75 @@
+{
+  "skill_name": "enhanced-video",
+  "evals": [
+    {
+      "id": 1,
+      "name": "cortes-aula-3-reels",
+      "prompt": "tenho essa aula ao vivo gravada (aula-pendulo.mp4) e a transcrição já pronta (aula-pendulo.transcricao.json). quero 3 reels de corte, cada um com uma ideia completa, legenda palavra por palavra e sem os enrolamentos tipo 'oi gente', 'deixa eu ver aqui'. manda os arquivos prontos pra postar",
+      "expected_output": "3 MP4 1080x1920 30fps, 20-60s cada, cada um começando numa frase de gancho (sem 'oi gente'/'vou pegar uma água'), com legenda queimada de 3-5 palavras por bloco dentro da área útil, áudio ~-14 LUFS, mais .srt e uma nota de QA com frames conferidos.",
+      "files": [
+        "inputs/aula-pendulo.mp4",
+        "inputs/aula-pendulo.transcricao.json"
+      ],
+      "assertions": [
+        "Entrega exatamente 3 arquivos MP4",
+        "Todos os MP4 são 1080x1920 (9:16)",
+        "Cada corte dura entre 15 e 60 segundos",
+        "Nenhum corte contém os enrolamentos 'oi gente', 'deixa eu ver aqui' ou 'vou pegar uma água'",
+        "Legenda queimada visível nos frames (texto sobre o vídeo)",
+        "Blocos de legenda com no máximo 5 palavras",
+        "Loudness integrado entre -15 e -13 LUFS",
+        "Entrega arquivo .srt ao lado de cada MP4",
+        "RESUMO registra frames conferidos (QA visual feito)"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "reels-anuncio-gancho",
+      "prompt": "preciso de um criativo em vídeo pro anúncio do lançamento do curso de radiestesia com pêndulo, formato reels, uns 15-20s. usa trechos dessa aula (aula-pendulo.mp4, transcrição em aula-pendulo.transcricao.json). quero o gancho forte logo no começo e mais 2 variações de gancho pra testar no meta ads",
+      "expected_output": "1 MP4 9:16 de 15-20s com gancho visível em texto já no frame 0-3s (funciona sem som), legenda, CTA no fim, mais 2 variações de gancho (como vídeos ou como roteiro de troca dos 3s iniciais) e tudo dentro da safe zone.",
+      "files": [
+        "inputs/aula-pendulo.mp4",
+        "inputs/aula-pendulo.transcricao.json"
+      ],
+      "assertions": [
+        "Entrega MP4 principal 1080x1920 com 15 a 20 segundos",
+        "Texto de gancho visível já no primeiro segundo (funciona sem som)",
+        "Entrega 2 variações de gancho (vídeo ou roteiro de troca dos 3s)",
+        "Tem CTA no final",
+        "Legenda/texto dentro da área útil 9:16 (x 65-930, y 270-1250)",
+        "Loudness integrado entre -15 e -13 LUFS"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "vsl-abertura-avatar-heygen",
+      "prompt": "quero a abertura de uma VSL pro curso de radiestesia (preço R$ 497) com um avatar falando, tipo heygen. faz o roteiro da abertura e já gera o vídeo",
+      "expected_output": "Roteiro da abertura da VSL (gancho, promessa, identificação) dividido em blocos de até 1 min para avatar; checagem de que o MCP da HeyGen não está instalado e de que não há cota/gasto sem confirmação; nenhuma chamada paga; fallback grátis entregue ou proposto (prévia local sem avatar, ou instruções de instalação do MCP Free); pergunta/aviso de consentimento de imagem.",
+      "files": [],
+      "assertions": [
+        "Entrega roteiro da abertura com gancho, promessa e identificação",
+        "Roteiro dividido em blocos de até 1 minuto (limite do HeyGen Free)",
+        "Verifica que o MCP/acesso HeyGen não está disponível em vez de supor",
+        "Não usa nem propõe usar API paga sem pedir confirmação",
+        "Oferece fallback grátis concreto (prévia local ou passos para instalar o MCP Free)",
+        "Menciona consentimento de imagem/voz ou cota mensal antes de gerar"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "intro-marca-hyperframes",
+      "prompt": "faz uma intro animada de 5 segundos pra marca Rota Diamante (roxo #520172 e dourado #D4A64A), vertical pros reels, com o nome da marca aparecendo de um jeito elegante",
+      "expected_output": "MP4 1080x1920, ~5s, 30fps, nome 'Rota Diamante' legível e com acento/ortografia corretos, cores da marca, frame 0 não preto, texto dentro da safe zone, feito em HyperFrames (render local, sem cloud), com os fontes da composição salvos.",
+      "files": [],
+      "assertions": [
+        "Entrega MP4 1080x1920",
+        "Duração entre 4,5 e 5,5 segundos",
+        "Usa as cores #520172 e #D4A64A",
+        "Nome 'Rota Diamante' legível e escrito corretamente nos frames",
+        "Frame 0 não é preto nem vazio",
+        "Fontes da composição salvos junto do MP4",
+        "Render local, sem serviço de nuvem"
+      ]
+    }
+  ]
+}

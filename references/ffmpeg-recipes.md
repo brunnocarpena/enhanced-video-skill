@@ -89,12 +89,20 @@ ffmpeg -i heygen.mp4 -vf fps=30 -c:v libx264 -crf 18 -pix_fmt yuv420p -c:a copy 
 
 ## Legenda
 
+Só funciona em ffmpeg com libass/freetype. O do Homebrew vem sem ("No such filter: 'ass'/'drawtext'"); ver as alternativas em [captions.md](captions.md).
+
 ```bash
 # queimar .ass (estilo + karaokê por palavra)
 -vf "ass=legenda.ass:fontsdir=./fontes"
 
 # texto fixo (ex.: título do gancho nos 3 primeiros segundos)
 -vf "drawtext=fontfile=/abs/Montserrat-ExtraBold.ttf:text='3 sinais de energia travada':fontsize=72:fontcolor=white:borderw=4:bordercolor=black:x=(w-text_w)/2:y=320:enable='lt(t,3)'"
+```
+
+Sem drawtext, título fixo por PNG (transparente) sobreposto:
+
+```bash
+ffmpeg -i in.mp4 -i titulo.png -filter_complex "[0:v][1:v]overlay=(W-w)/2:320:enable='lt(t,3)'" -c:a copy out.mp4
 ```
 
 No `drawtext`, apóstrofo e dois-pontos precisam de escape; para texto com pontuação, usar `textfile=titulo.txt`.

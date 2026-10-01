@@ -51,6 +51,7 @@ references/           conhecimento por etapa (lido sob demanda)
   paid-on-request.md  ferramentas pagas (só sob pedido)
   qa-checklist.md     checklist antes de entregar
 scripts/
+  check-tools.sh      preflight: o que este Mac tem (filtros do ffmpeg, Whisper, HeyGen)
   qa.sh               formato, loudness e frames com safe zone
   heygen-quota.sh     check | use | set N
 docs/specs/           spec de design
@@ -71,7 +72,7 @@ docs/specs/           spec de design
 git clone https://github.com/brunnocarpena/enhanced-video-skill ~/.claude/skills/enhanced-video
 ```
 
-Dependências: `ffmpeg` (obrigatório). Sob demanda, instaladas só depois de passar pela skill `supply-chain-guard`: Whisper (whisper.cpp ou `uvx openai-whisper`), HyperFrames (`npx hyperframes@<versão pinada>`), MCP da HeyGen (`claude mcp add --transport http -s user heygen https://mcp.heygen.com/mcp/v1/` + login OAuth).
+Dependências: `ffmpeg` (obrigatório; o do Homebrew vem sem libass/drawtext, e a skill contorna com HyperFrames ou PNG + overlay). Rodar `scripts/check-tools.sh` para ver o que falta. Sob demanda, instaladas só depois de passar pela skill `supply-chain-guard`: Whisper (whisper.cpp ou `uvx openai-whisper`), HyperFrames (`npx hyperframes@<versão pinada>`), MCP da HeyGen (`claude mcp add --transport http -s user heygen https://mcp.heygen.com/mcp/v1/` + login OAuth).
 
 ## Fontes destiladas
 
