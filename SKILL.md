@@ -24,14 +24,28 @@ CONFERIDOS EM FRAMES REAIS ANTES DE ENTREGAR.
 3. O brief do usuário.
 4. Conhecimento destilado nas references.
 
-## Etapa 0 - Triagem (sempre, antes de produzir)
+## Etapa 0 - Briefing e triagem (sempre, antes de produzir)
 
-Responder estas 4 perguntas, a partir do pedido e dos arquivos. Perguntar ao usuário **uma vez**, e só o que não dá para inferir:
+**Base fixa - fora do funil, vale sempre.** O QA em frames (Etapa 5), as regras da casa ([house-rules.md](references/house-rules.md) + RULES-GLOBAL), as travas de cota e custo (nada pago ou de cota sem ok e custo mostrado antes) e o gancho forte nos 3s não se negociam no briefing e nunca caem por "nível mais simples". São piso.
 
-1. **Tipo**: anúncio | reels/shorts | corte de vídeo longo | VSL | motion.
-2. **Matéria-prima**: do zero (só tema) | roteiro pronto | vídeo bruto (live/aula/gravação) | só marca + oferta.
-3. **Destino**: Feed, Stories, Reels, TikTok, Shorts, YouTube ou página de vendas → define proporção, duração e safe zone ([platform-specs.md](references/platform-specs.md)). Sem destino dito: anúncio e Reels = 9:16; VSL = 16:9 + versão 9:16 do gancho.
-4. **Motor**: pela tabela abaixo.
+O que o briefing decide é **o nível de produção**: corte simples ou alto impacto. Abrir um **briefing interativo (`AskUserQuestion`) antes de produzir**, numa **única chamada**, auto-preenchendo o que o pedido e os arquivos já revelam e perguntando só o que falta (até 4 perguntas). O **nível de produção é obrigatório e nunca se presume** - é ele que carrega ou deixa de fora os motores e references pesados (motion de marca, avatar, pago):
+
+1. **Produção** (escolha única, obrigatória): `Simples` (corte limpo + legenda legível, sem motion - recomendado) · `Produzido` (motion de marca, texto animado, transições, intro) · `Alto impacto` (avatar HeyGen e/ou motion pesado; pode exigir passo pago com ok explícito).
+2. **Tipo**: anúncio | reels/shorts | corte de vídeo longo | VSL | motion.
+3. **Matéria-prima**: do zero (só tema) | roteiro pronto | vídeo bruto (live/aula/gravação) | só marca + oferta.
+4. **Destino**: Feed, Stories, Reels, TikTok, Shorts, YouTube ou página de vendas → define proporção, duração e safe zone ([platform-specs.md](references/platform-specs.md)). Sem destino dito: anúncio e Reels = 9:16; VSL = 16:9 + versão 9:16 do gancho.
+
+Sem resposta / pulou → **Simples**. Registrar as respostas no `project.md`.
+
+### Funil de produção
+
+| Nível | Entra | NÃO entra |
+|---|---|---|
+| **Simples** (padrão) | ffmpeg + Whisper local (corte, silêncio, legenda), QA | HyperFrames pesado, HeyGen, qualquer pago |
+| **Produzido** | + HyperFrames (motion de marca, texto animado, intro), [hyperframes.md](references/hyperframes.md) | avatar, pago |
+| **Alto impacto** | + HeyGen Free ([heygen.md](references/heygen.md), com [quota-guard.md](references/quota-guard.md)) e/ou motion pesado; pago só sob pedido ([paid-on-request.md](references/paid-on-request.md)) | - |
+
+Na dúvida, o nível é o **de baixo**. Subir exige resposta explícita no briefing. Depois de fixar o nível, escolher o **motor** pela tabela abaixo (filtrada pelo que o nível libera):
 
 | Situação | Motor | Custo |
 |---|---|---|
