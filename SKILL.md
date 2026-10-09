@@ -26,7 +26,9 @@ CONFERIDOS EM FRAMES REAIS ANTES DE ENTREGAR.
 
 ## Etapa 0 - Briefing e triagem (sempre, antes de produzir)
 
-**Base fixa - fora do funil, vale sempre.** O QA em frames (Etapa 5), as regras da casa ([house-rules.md](references/house-rules.md) + RULES-GLOBAL), as travas de cota e custo (nada pago ou de cota sem ok e custo mostrado antes) e o gancho forte nos 3s não se negociam no briefing e nunca caem por "nível mais simples". São piso.
+**Base fixa - fora do funil, vale sempre.** O QA em frames (Etapa 5), as regras da casa ([house-rules.md](references/house-rules.md) + RULES-GLOBAL), as travas de cota e custo (nada pago ou de cota sem ok e custo mostrado antes), o gancho forte nos 3s e o **enquadramento/ritmo/legibilidade** (corte no tempo certo, safe zone, legenda legível no celular, áudio no volume certo) não se negociam no briefing e nunca caem por "nível mais simples". São piso.
+
+**Simples NÃO é "sem capricho". Simples é corte limpo e impecável:** enquadramento certo, ritmo bom, legenda legível, som tratado. O que o nível baixo tira é EFEITO (motion de marca, avatar, transições pesadas), nunca o acabamento básico. Se o vídeo ficou pobre, mal enquadrado ou com legenda ilegível, falhou a base - não é o que Simples significa.
 
 O que o briefing decide é **o nível de produção**: corte simples ou alto impacto. Abrir um **briefing interativo (`AskUserQuestion`) antes de produzir**, numa **única chamada**, auto-preenchendo o que o pedido e os arquivos já revelam e perguntando só o que falta (até 4 perguntas). O **nível de produção é obrigatório e nunca se presume** - é ele que carrega ou deixa de fora os motores e references pesados (motion de marca, avatar, pago):
 
